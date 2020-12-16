@@ -13,7 +13,7 @@ const morgan = require("morgan");
 const expenseRoute = require("./routes/expense.route.js");
 
 // Using Built-in Json Middleware
-app.use(express.json())
+app.use(express.json());
 
 // Use Cors Middleware
 app.use(cors());
@@ -44,6 +44,11 @@ if (connection) {
   console.log("Successfully Connected To Database");
 } else {
   console.log("There Is An Error!");
+}
+
+// Serve Build
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(''));
 }
 
 // Our Port

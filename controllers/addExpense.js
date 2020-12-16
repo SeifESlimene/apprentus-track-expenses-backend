@@ -4,6 +4,7 @@ const ExpenseModal = require("../models/expense.model.js");
 // Add Expense
 const add = (req, res) => {
   const { name, date, description, amount, approved } = req.body;
+
   const expense = new ExpenseModal({
     name,
     date,
@@ -11,7 +12,7 @@ const add = (req, res) => {
     amount,
     approved,
   });
-
+  console.log(expense);
   // Save our Document and Handling Error
   expense.save((err) => {
     if (err) {
